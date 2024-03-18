@@ -28,6 +28,8 @@ public class level : singleton<level>
 
     public Dictionary<point, tiles_script> tiles_map { get; set; }
 
+    [SerializeField] private Transform map_content;
+
     int[][] get_map_content(string folder)
     {
         string[] lines = File.ReadAllLines(folder + "/" + "ground.txt");
@@ -137,7 +139,7 @@ public class level : singleton<level>
             for (int col = 0; col < map[row].Length; col++)
             {
                 tiles_script new_tile = Instantiate(tiles[map[row][col]]).GetComponent<tiles_script>();
-                new_tile.setup(new point(col, row), new Vector3(tile_size / 2 + start_pos.x + col * tile_size, start_pos.y - (tile_size / 2) -row * tile_size, 0));
+                new_tile.setup(new point(col, row), new Vector3(tile_size / 2 + start_pos.x + col * tile_size, start_pos.y - (tile_size / 2) -row * tile_size, 0), map_content);
                 last_tile = new Vector3(new_tile.transform.position.x + tile_size / 2, new_tile.transform.position.y - tile_size / 2, 0);
                 //tiles_map.Add(new point(col, row), new_tile);
                 x = col;
