@@ -1,0 +1,5 @@
+# Disable statistics for useless files
+Packages/* linguist-detectable=false
+ProjectSettings/* linguist-detectable=false
+obj/* linguist-detectable=false
+*.blob linguist-detectable=false
